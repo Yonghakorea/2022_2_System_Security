@@ -25,7 +25,6 @@ class MyMainWindow(QMainWindow):
     def create_widgets(self):
         self.central_widget = QWidget()
         self.main_layout = QGridLayout()
-        self.moveup_button = QPushButton('Collapse all', self)
         self.goto_lineedit = QLineEdit('C:\\', self)
         self.goto_button = QPushButton('Go', self)
         self.folder_view = QTreeView(self)
@@ -34,7 +33,6 @@ class MyMainWindow(QMainWindow):
         self.file_model = QFileSystemModel(self)
 
     def config_widgets(self):
-        self.main_layout.addWidget(self.moveup_button, 0, 0)
         self.main_layout.addWidget(self.goto_lineedit, 0, 1, 1, 2)
         self.main_layout.addWidget(self.goto_button, 0, 3)
         self.main_layout.addWidget(self.folder_view, 1, 0, 1, 2)
@@ -42,8 +40,6 @@ class MyMainWindow(QMainWindow):
 
         self.central_widget.setLayout(self.main_layout)
 
-        # 단추 "위로"
-        self.moveup_button.setMaximumWidth(100)
 
         # 단추 "이동"
         self.goto_button.setMaximumWidth(70)
