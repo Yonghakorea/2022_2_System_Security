@@ -1,7 +1,6 @@
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.Qt import *
-import text_editor
 import sys
 import os
 import shutil
@@ -17,12 +16,12 @@ class MyMainWindow(QMainWindow):
         self.config_widgets()
         self.show_widgets()
 
-    def config_window(self):
+    def config_window(self): #제목창
         self.setWindowTitle('System Security')
         self.setMinimumHeight(600)
         self.setMinimumWidth(1000)
 
-    def create_widgets(self):
+    def create_widgets(self): #상단 위젯
         self.central_widget = QWidget()
         self.main_layout = QGridLayout()
         self.goto_lineedit = QLineEdit('C:\\', self)
