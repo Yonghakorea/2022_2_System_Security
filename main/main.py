@@ -1,13 +1,9 @@
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
+
 from PyQt5.Qt import *
 import sys
-import os
-import shutil
-import functools
 import tkinter
 
-class MyMainWindow(QMainWindow):
+class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         QMainWindow.__init__(self, parent)
@@ -35,7 +31,7 @@ class MyMainWindow(QMainWindow):
     def config_widgets(self):
         self.main_layout.addWidget(self.goto_lineedit, 0, 1, 1, 2)
         self.main_layout.addWidget(self.folder_view, 1, 0, 1, 2)
-        self.main_layout.addWidget(self.file_view, 1, 2, 1, 2)
+        self.main_layout.addWidget(self.file_view, 1, 2, 1, 1)
         self.central_widget.setLayout(self.main_layout)
 
 
@@ -108,7 +104,7 @@ class MyMainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    mw = MyMainWindow()
+    mw = MainWindow()
     mw.show()
     app.exec_()
     app.exit()
