@@ -14,6 +14,8 @@ class MyMainWindow(QMainWindow):
         self.config_window()
         self.create_widgets()
         self.config_widgets()
+        self.create_menubar()
+        self.bind_widgets()
         self.show_widgets()
 
     def config_window(self): #제목창
@@ -25,7 +27,6 @@ class MyMainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.main_layout = QGridLayout()
         self.goto_lineedit = QLineEdit('C:\\', self)
-        self.goto_button = QPushButton('Go', self)
         self.folder_view = QTreeView(self)
         self.file_view = QTreeView(self)
         self.folder_model = QFileSystemModel(self)
@@ -33,15 +34,12 @@ class MyMainWindow(QMainWindow):
 
     def config_widgets(self):
         self.main_layout.addWidget(self.goto_lineedit, 0, 1, 1, 2)
-        self.main_layout.addWidget(self.goto_button, 0, 3)
         self.main_layout.addWidget(self.folder_view, 1, 0, 1, 2)
         self.main_layout.addWidget(self.file_view, 1, 2, 1, 2)
-
         self.central_widget.setLayout(self.main_layout)
 
 
         # 단추 "이동"
-        self.goto_button.setMaximumWidth(70)
         self.setCentralWidget(self.central_widget)
 
         self.folder_model.setRootPath(None)
@@ -69,7 +67,7 @@ class MyMainWindow(QMainWindow):
 
 
 
-    def about_prog(self, event=None):
+    def about_program(self, event=None):
         w = tkinter.Tk()
         w.title("About program")
         w.minsize(width=400, height=100)
@@ -78,7 +76,7 @@ class MyMainWindow(QMainWindow):
         tkinter.Label(w, text='프로그램 이름 :').grid(column=0, row=0, **options)
         tkinter.Label(w, text="파일관리자").grid(column=1, row=0, **options)
 
-        tkinter.Label(w, text='작성자 :').grid(column=0, row=1, **options)
+        tkinter.Label(w, text='작성 :').grid(column=0, row=1, **options)
         tkinter.Label(w, text="김용하, 한겨레").grid(column=1, row=1, **options)
 
 
@@ -91,10 +89,21 @@ class MyMainWindow(QMainWindow):
 
         w.mainloop()
 
+    def bind_widgets(self):
+        self.about_action.triggered.connect(self.about_program)
 
+    def create_menubar(self):
+        self.about_action = QAction('About', self)
+        self.about_action.setShortcut('F1')
+
+        self.menubar = self.menuBar()
+        self.about_menu = self.menubar.addMenu('About')
+        self.about_menu.addAction(self.about_action)
 
     def show_widgets(self):
         self.setLayout(self.main_layout)
+
+
 
 
 if __name__ == '__main__':
