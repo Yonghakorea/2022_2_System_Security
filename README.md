@@ -3,7 +3,8 @@
 
 개발 목표
 
-Python, PyQt5 QTreeWidget을 이용한 윈도우 탐색기 개발
+1. Python, PyQt5 QTreeWidget을 이용한 윈도우 탐색기 개발(보안 관련 기능 탑재)
+2. 탐색기 상의 txt파일을 편집할 수 있는 텍스트 편집기(부가기능, tkinter 사용)
 
 개발환경
 
