@@ -1,4 +1,4 @@
-# 2022_2_systemSecurity
+# 2022_2_System_Security
 2022년 2학기 시스템보안 팀 프로젝트
 
 개발 목표
